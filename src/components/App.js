@@ -2,9 +2,34 @@ import React, { Component } from 'react';
 import { fetchCityWeather } from '../utils/api'
 
 class App extends Component {
-  componentDidMount() {
-    fetchCityWeather()
+  state = {
+    searchedCity:'',
+    cities:[]
   }
+  handleOnChange = (e) => {
+    this.setState({searchedCity:e.target.value})
+  }
+  addCity = (e) => {
+    e.preventDefault()
+
+    const {
+      searchedCity
+    } = this.state
+
+    searchedCity &&
+      this.setState((prevState) => ({
+        cities:[
+          ...prevState.cities,
+          searchedCity
+        ]
+      }), this.setState({searchedCity:''}))
+  }
+  componentDidMount() {
+    fetchCityWeather('London')
+  }
+
+
+
   
   render() {
     return (
@@ -12,9 +37,11 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="search-bar__wrapper">
+          <form onSubmit={this.addCity}>
+            <input type='search' value={this.state.searchedCity} onChange={this.handleOnChange}/>
+          </form>
+        </div>
       </div>
     );
   }
