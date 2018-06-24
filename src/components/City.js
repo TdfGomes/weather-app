@@ -6,10 +6,14 @@ class City extends Component {
   state = {
     [this.props.city]:{}
   }
+  
   parseData = (cityData) => {
-    console.log(cityData)
-    const last3Day = cityData.list.filter(city => new Date(city.dt_txt).getDate() >= 25)
-    console.log(last3Day)
+    
+    this.setState((prevState) => ({
+      ...prevState,
+      [this.props.city]: cityData.list.slice(0, -16) //last 3 days
+    }))
+    
   }
   componentDidMount() {
     fetchCityWeather(this.props.city).then(cityData => this.parseData(cityData))
