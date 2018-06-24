@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
-import { fetchCityWeather } from '../utils/api'
+import React from 'react';
 import SearchBar from './SearchBar'
+import { CitiesProvider } from './CitiesProvider';
+import CitiesList from './CitiesList';
 
-class App extends Component {
-  
 
-  componentDidMount() {
-    fetchCityWeather('London')
-  }
-  
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <SearchBar/>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <CitiesProvider>
+    <div className="App">
+      <header className="App-header">
+        <h1 className="App-title">Welcome to React</h1>
+      </header>
+      <SearchBar/>
+      <CitiesList/>
+    </div>
+  </CitiesProvider>
+)
+ 
 
 export default App;

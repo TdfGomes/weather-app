@@ -1,33 +1,26 @@
 import React, {Component} from 'react'
+import {CitiesConsumer} from './CitiesProvider'
 
 class SearchBar extends Component {
-  state = {
-    searchedCity:'',
-    cities:[]
-  }
-
-  handleOnChange = (e) => this.setState({searchedCity: e.target.value})
   
-  addCity = (e) => {
-    e.preventDefault()
+  inputRef = React.createRef();
 
-    const {
-      searchedCity
-    } = this.state
-
-    searchedCity &&
-      this.setState((prevState) => ({
-        cities:[
-          ...prevState.cities,
-          searchedCity
-        ]
-      }), this.setState({searchedCity:''}))
-  }
   render() {
     return(
-      <form onSubmit={this.addCity}>
-        <input type='search' value={this.state.searchedCity} onChange={this.handleOnChange}/>
-      </form>
+      <CitiesConsumer>
+        {
+          ({addCity}) => (
+            <form onSubmit={(e) => {
+              e.preventDefault()
+              this.inputRef.current.value.trim().length > 0 &&
+                addCity(this.inputRef.current.value)
+                this.inputRef.current.value = ''
+            }}>
+              <input type='search' ref={this.inputRef}/>
+            </form>
+          )
+        }
+      </CitiesConsumer>
     )
   }
 }
