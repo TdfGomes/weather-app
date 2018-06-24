@@ -12,7 +12,7 @@ class City extends Component {
       ...prevState,
       [this.props.city]: cityData.list
         .filter(city => today + 2 >= new Date(city.dt_txt).getDate() ) //last 3 days
-        
+        //TODO split data by day!!!
     }))
   }
   componentDidMount() {
