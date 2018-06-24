@@ -5,20 +5,29 @@ class City extends Component {
   state = {
     [this.props.city]: {}
   };
+  
+  today = new Date().getDate()
 
   parseData = cityData => {
-    const today = new Date().getDate()
     this.setState(prevState => ({
       ...prevState,
-      [this.props.city]: cityData.list
-        .filter(city => today + 2 >= new Date(city.dt_txt).getDate() ) //last 3 days
-        //TODO split data by day!!!
+      [this.props.city]: {
+        cityDetails:{
+          ...cityData.city
+        },
+        dayOne: cityData.list
+          .filter(city => this.today === new Date(city.dt_txt).getDate() ), 
+        dayTwo: cityData.list
+          .filter(city => this.today + 1 === new Date(city.dt_txt).getDate() ), 
+        dayThree: cityData.list
+          .filter(city => this.today + 2 === new Date(city.dt_txt).getDate() ) 
+      }
     }))
   }
+
   componentDidMount() {
-    fetchCityWeather(this.props.city).then(cityData =>
-      this.parseData(cityData)
-    )
+    fetchCityWeather(this.props.city)
+      .then( cityData => this.parseData(cityData) )
   }
 
   render() {
