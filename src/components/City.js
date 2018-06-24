@@ -3,9 +3,18 @@ import {fetchCityWeather} from '../utils/api'
 
 
 class City extends Component {
-  componentDidMount() {
-    fetchCityWeather(this.props.city)
+  state = {
+    [this.props.city]:{}
   }
+  parseData = (cityData) => {
+    console.log(cityData)
+    const last3Day = cityData.list.filter(city => new Date(city.dt_txt).getDate() >= 25)
+    console.log(last3Day)
+  }
+  componentDidMount() {
+    fetchCityWeather(this.props.city).then(cityData => this.parseData(cityData))
+  }
+
   
   render(){
     return(
