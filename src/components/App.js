@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
+import Grid from '@material-ui/core/Grid'
 import SearchBar from './SearchBar'
-import { CitiesProvider } from './CitiesProvider';
-import CitiesList from './CitiesList';
+import { CitiesProvider } from './CitiesProvider'
+import CitiesList from './CitiesList'
 
 
 const App = () => (
   <CitiesProvider>
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Welcome to React</h1>
+    <Grid container direction='column' spacing={8}>
+      <header style={{textAling:'center', padding:'25px 0'}}>
+        <SearchBar/>
       </header>
-      <SearchBar/>
       <CitiesList/>
-    </div>
+    </Grid>
   </CitiesProvider>
 )
  

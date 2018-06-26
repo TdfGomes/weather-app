@@ -31,7 +31,7 @@ class City extends Component {
   }
 
   render() {
-    return <h1>{this.props.city}</h1>;
+    return (<h1>{this.props.city}</h1>)
   }
 }
 
