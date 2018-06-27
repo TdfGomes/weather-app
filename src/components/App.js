@@ -4,7 +4,6 @@ import SearchBar from './SearchBar'
 import { CitiesProvider } from './CitiesProvider'
 import CitiesList from './CitiesList'
 
-
 const App = () => (
   <CitiesProvider>
     <Grid container direction='column' spacing={8}>

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
@@ -8,34 +9,29 @@ import { GridListTile } from '@material-ui/core'
 
 import { getIcon } from '../utils/getIcon'
 
-const styles = (theme) => {
-
-  console.log(theme)
+const styles = (theme) => ({
+  detailWrapper:{
+    textAlign:'center',
+    margin: '15px 0'
+  },
+  ml:{
+    marginLeft:5
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    transform: 'translateZ(0)',
+    padding:'25px 0'
+  },
+  gridBg:{
+    backgroundColor: theme.palette.grey['100'],
+    border: `1px solid ${theme.palette.grey['200']}`
   
-  return {
-    detailWrapper:{
-      textAlign:'center',
-      margin: '15px 0'
-    },
-    ml:{
-      marginLeft:5
-    },
-    gridList: {
-      flexWrap: 'nowrap',
-      transform: 'translateZ(0)',
-      padding:'25px 0'
-    },
-    gridBg:{
-      backgroundColor: theme.palette.grey['100'],
-      border: `1px solid ${theme.palette.grey['200']}`
-      
-    },
-    pad:{
-      paddingTop:20,
-      paddingBottom:20
-    }
+  },
+  pad:{
+    paddingTop:20,
+    paddingBottom:20
   }
-}
+})
 
 const WeatherDetails = ({dayDetails, classes}) => {
   const weekDay = (date) => {
@@ -82,5 +78,9 @@ const WeatherDetails = ({dayDetails, classes}) => {
   )
 }
 
+WeatherDetails.propTypes = {
+  dayDetails:PropTypes.array.isRequired,
+  classes:PropTypes.object.isRequired
+}
 
 export default withStyles(styles)(WeatherDetails)

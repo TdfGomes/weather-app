@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from 'prop-types'
 import WeatherDetails from './WeatherDetails'
 import { fetchCityWeather } from "../utils/api"
 import List from "@material-ui/core/List"
@@ -12,6 +13,10 @@ class City extends Component {
   state = {
     city: {},
     isOpen: false
+  }
+
+  static propTypes = {
+    city:PropTypes.string.isRequired
   }
 
   parseData = cityData => {

@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
-
+import PropTypes from 'prop-types'
 const CitiesContext = React.createContext()
 
 class CitiesProvider extends Component {
   state = {
     cities:{}
+  }
+
+  static propTypes = {
+    children:PropTypes.element.isRequired
   }
   
   addCity = (city) => {
