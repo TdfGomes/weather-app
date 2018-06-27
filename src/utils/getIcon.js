@@ -37,6 +37,42 @@ export const getIcon = (icon) => {
       return <WeatherIcons name='night-thunderstorm' size='2x'/>
     case'13n':
       return <WeatherIcons name='night-snow' size='2x'/>
+    case 1:
+    case 13:
+      return <WeatherIcons name='time-1' />
+    case 2:
+    case 14:
+      return <WeatherIcons name='time-2'/>
+    case 3:
+    case 15:
+      return <WeatherIcons name='time-3'/>
+    case 4:
+    case 16:
+      return <WeatherIcons name='time-4'/>
+    case 5:
+    case 17:
+      return <WeatherIcons name='time-5'/>
+    case 6:
+    case 18:
+      return <WeatherIcons name='time-6'/>
+    case 7:
+    case 19:
+      return <WeatherIcons name='time-7'/>
+    case 8:
+    case 20:
+      return <WeatherIcons name='time-8'/>
+    case 9:
+    case 21:
+      return <WeatherIcons name='time-9'/>
+    case 10:
+    case 22:
+      return <WeatherIcons name='time-10'/>
+    case 11:
+    case 23:
+      return <WeatherIcons name='time-11'/>
+    case 12:
+    case 0:
+      return <WeatherIcons name='time-12'/>
     default:
       return null
   }

@@ -1,17 +1,12 @@
 import React, { Component } from "react"
 import WeatherDetails from './WeatherDetails'
 import { fetchCityWeather } from "../utils/api"
-import { withStyles } from "@material-ui/core/styles"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import Collapse from "@material-ui/core/Collapse"
 import ListItemText from "@material-ui/core/ListItemText"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
-
-// const styles = themes => ({
-
-// })
 
 class City extends Component {
   state = {
