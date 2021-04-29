@@ -6,7 +6,7 @@
     "@material-ui/core": "^1.2.3",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.6.2",
-    "react": "^16.4.1",
+    "react": "^16.14.0",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
     "react-weathericons": "^1.0.4"
